@@ -67,7 +67,6 @@ void ATM::menu(){
     default:
         break;
     }
-
 } 
 
 
