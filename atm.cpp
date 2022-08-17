@@ -15,13 +15,13 @@ class ATM{
     public:
     void menu();
     void register_account();
-    string get_customer_name(); 
     void verify_account_created(); 
     void deposit_amount();
     void withdraw_amount();
+    void display_balance();
     void exit_option(); 
     void exit();
-    string return_account_details();
+    string get_customer_name(); 
     int return_account_balance();
 };
 
@@ -54,6 +54,10 @@ void ATM::menu(){
     
     case 3:
         withdraw_amount();
+        break;
+    
+    case 4:
+        display_balance();
         break;
     
     case 5:
@@ -175,11 +179,34 @@ void ATM::withdraw_amount(){
     else{
         balance = balance - amount;
 
-        cout << "Your cash has been succesfully deposited!" << endl;
+        cout << "Here is your cash!" << endl;
     }
 
     exit_option();
 }
+
+
+int ATM::return_account_balance(){
+    /*
+    Simple function to return the customers account balance.
+    */
+
+   return balance;
+}
+
+
+void ATM::display_balance(){
+    /*
+    Function to nicely display a customers balance
+    and allow them to return to main menu if they wish to do so
+    */
+
+   verify_account_created();
+   
+   cout << "Your current balance is £" << return_account_balance() << endl;
+   exit_option();
+}
+
 
 int main() {
     ATM atm;
